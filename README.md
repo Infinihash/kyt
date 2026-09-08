@@ -2,7 +2,10 @@
 
 Official Node/TypeScript SDK for the [Infinihash KYT API](https://kyt.infinihash.com/docs).
 
-> **Status: Alpha** — API is stable; SDK wrapper is actively being built. Full docs coming soon.
+Thin, dependency-free wrapper around the Infinihash KYT REST API (wallet
+screening, case management, SAR drafts).
+
+> **Status: Alpha** — API is stable; SDK wrapper surface may still evolve.
 
 ## Installation
 
@@ -14,28 +17,38 @@ yarn add @infinihash/kyt
 
 ## Quick Start
 
-```typescript
-import { InfinihashKYT } from '@infinihash/kyt';
+```ts
+import { KYT } from "@infinihash/kyt";
 
-const kyt = new InfinihashKYT({ apiKey: process.env.INFINIHASH_KYT_KEY });
+const client = new KYT({ apiKey: process.env.INFINIHASH_KYT_KEY });
 
-const result = await kyt.screen({
-  type: 'wallet',
-  value: '0x722122dF12D4e14e13Ac3b6895a86e84145b6967',
-  chain: 'ethereum',
+const r = await client.screen.address(
+  "0x722122dF12D4e14e13Ac3b6895a86e84145b6967",
+  "ethereum"
+);
+console.log(r.risk_score, r.risk_level);
+
+const c = await client.cases.create({
+  address: "0x722122dF12D4e14e13Ac3b6895a86e84145b6967",
+  notes: "From SDK walkthrough",
 });
 
-console.log(result.risk_level);  // 'critical'
-console.log(result.action);      // 'block'
+const fincen = await client.cases.sarExportFinCEN(c.id);
 ```
 
 ## Features
 
 - Wallet and transaction screening
-- SAR narrative generation
-- Case management
+- AI-generated SAR narrative and FinCEN-structured export
+- Case management with SAR escalation workflow
 - Real-time webhook subscriptions
+- Bulk screening, Travel Rule checks, and intelligence-graph lookups
 - Full TypeScript types
+
+## Errors
+
+Non-2xx responses throw `KYTError(status, message, body)`. The `body` field
+preserves the parsed JSON the server returned.
 
 ## Documentation
 
