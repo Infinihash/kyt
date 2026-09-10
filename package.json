@@ -1,15 +1,22 @@
 {
   "name": "@infinihash/kyt",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "description": "TypeScript SDK for the Infinihash KYT API (wallet screening, cases, SAR drafts).",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": ["dist", "src", "README.md"],
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsc",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "test": "node --test test/*.test.mjs"
   },
-  "engines": { "node": ">=18" },
+  "engines": {
+    "node": ">=18"
+  },
   "license": "MIT",
   "author": "Infinihash <dx@infinihash.com>",
   "homepage": "https://kyt.infinihash.com",
@@ -25,7 +32,9 @@
     "crypto",
     "screening"
   ],
-  "publishConfig": { "access": "public" },
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "typescript": "^5.3.0",
     "@types/node": "^18.19.0"
