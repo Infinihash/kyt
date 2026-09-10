@@ -1,6 +1,6 @@
 /**
  * @infinihash/kyt — TypeScript / JavaScript SDK for the Infinihash KYT API
- * Version: 0.2.0
+ * Version: 0.2.1
  *
  * Works in Node.js 18+, Bun, Deno, and any modern browser (fetch required).
  *
@@ -297,7 +297,7 @@ export class KYT {
           "X-API-Key": this.apiKey,
           "Content-Type": "application/json",
           Accept: "application/json",
-          "User-Agent": "infinihash-kyt-ts/0.2.0",
+          "User-Agent": "infinihash-kyt-ts/0.2.1",
         },
         body: body === undefined ? undefined : JSON.stringify(body),
         signal: controller.signal,
@@ -677,11 +677,11 @@ export class KYT {
      * @param address  Address (chain prefix optional, e.g. "eth:0xABC...").
      */
     lookup: (address: string) =>
-      this.req<IntelLookup>("GET", `/api/v1/lookup/${address}`),
+      this.req<IntelLookup>("GET", `/api/v1/intel/lookup/${address}`),
 
     /** Return the last 50 screenings for your organisation. */
     recentScreenings: () =>
-      this.req<ScreenResult[]>("GET", "/api/v1/recent-screenings"),
+      this.req<ScreenResult[]>("GET", "/api/v1/intel/recent-screenings"),
   };
 
   // ── Monitor (legacy) ──────────────────────────────────────────────────────
