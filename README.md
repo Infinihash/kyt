@@ -18,9 +18,9 @@ yarn add @infinihash/kyt
 ## Quick Start
 
 ```ts
-import { KYT } from "@infinihash/kyt";
+import { Client } from "@infinihash/kyt"; // `KYT` is an identical alias
 
-const client = new KYT({ apiKey: process.env.INFINIHASH_KYT_KEY });
+const client = new Client({ apiKey: process.env.INFINIHASH_KYT_KEY });
 
 const r = await client.screen.address(
   "0x722122dF12D4e14e13Ac3b6895a86e84145b6967",

@@ -1,14 +1,14 @@
 /**
  * @infinihash/kyt — TypeScript / JavaScript SDK for the Infinihash KYT API
- * Version: 0.2.1
+ * Version: 0.2.2
  *
  * Works in Node.js 18+, Bun, Deno, and any modern browser (fetch required).
  *
  * Quick start
  * -----------
- *   import KYT from "@infinihash/kyt";
+ *   import { Client } from "@infinihash/kyt"; // `KYT` is an identical alias
  *
- *   const client = new KYT({ apiKey: "ih_kyt_..." });
+ *   const client = new Client({ apiKey: "ih_kyt_..." });
  *
  *   // Screen a wallet
  *   const result = await client.screen.address(
@@ -297,7 +297,7 @@ export class KYT {
           "X-API-Key": this.apiKey,
           "Content-Type": "application/json",
           Accept: "application/json",
-          "User-Agent": "infinihash-kyt-ts/0.2.1",
+          "User-Agent": "infinihash-kyt-ts/0.2.2",
         },
         body: body === undefined ? undefined : JSON.stringify(body),
         signal: controller.signal,
@@ -702,5 +702,12 @@ export class KYT {
   /** Check API liveness. Returns { status: "ok" } when healthy. */
   health = () => this.req<{ status: string }>("GET", "/api/v1/health");
 }
+
+/**
+ * `Client` is the name used throughout the docs quickstarts; `KYT` is the
+ * original name. Both refer to the same class (value and type).
+ */
+export const Client = KYT;
+export type Client = KYT;
 
 export default KYT;
