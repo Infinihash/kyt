@@ -8,7 +8,7 @@
  * -----------
  *   import { Client } from "@infinihash/kyt"; // `KYT` is an identical alias
  *
- *   const client = new Client({ apiKey: "ih_kyt_..." });
+ *   const client = new Client({ apiKey: "kyt_..." });
  *
  *   // Screen a wallet
  *   const result = await client.screen.address(
@@ -24,7 +24,7 @@
  * Auth
  * ----
  *   Pass { apiKey } to the constructor or set INFINIHASH_KYT_KEY in the environment.
- *   Issue keys at https://kyt.infinihash.com/kyt/admin (X-API-Key header).
+ *   Issue keys at https://kyt.infinihash.com/kyt/settings/api-keys (X-API-Key header).
  *
  * Errors
  * ------
@@ -38,7 +38,7 @@ const DEFAULT_BASE_URL = "https://kyt.infinihash.com";
 // ---------------------------------------------------------------------------
 
 export interface KYTOptions {
-  /** Your KYT API key (ih_kyt_...). Falls back to INFINIHASH_KYT_KEY env var. */
+  /** Your KYT API key (kyt_...). Falls back to INFINIHASH_KYT_KEY env var. */
   apiKey?: string;
   /** Override base URL for sandbox / staging (default: https://kyt.infinihash.com). */
   baseUrl?: string;

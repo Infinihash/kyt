@@ -36,12 +36,18 @@ const c = await client.cases.create({
 const fincen = await client.cases.sarExportFinCEN(c.id);
 ```
 
+## API keys
+
+Create a key at [kyt.infinihash.com/kyt/settings/api-keys](https://kyt.infinihash.com/kyt/settings/api-keys).
+Keys start with `kyt_`. Pass it as `apiKey` or set `INFINIHASH_KYT_KEY`; the
+SDK sends it in the `X-API-Key` header.
+
 ## Features
 
 - Wallet and transaction screening
 - AI-generated SAR narrative and FinCEN-structured export
 - Case management with SAR escalation workflow
-- Real-time webhook subscriptions
+- Webhook subscriptions
 - Bulk screening, Travel Rule checks, and intelligence-graph lookups
 - Full TypeScript types
 
