@@ -10,7 +10,7 @@ test("Client is an alias of KYT", () => {
 });
 
 test("new Client({apiKey}) constructs", () => {
-  const c = new sdk.Client({ apiKey: "ih_kyt_test" });
+  const c = new sdk.Client({ apiKey: "kyt_test" });
   assert.equal(c.baseUrl, "https://kyt.infinihash.com");
   assert.equal(typeof c.screen.address, "function");
 });
